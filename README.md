@@ -1,1 +1,1 @@
-# shiny-dev
+Bienvenue dans ce répertoire qui contient le fichier Rmarkdown de mon travail sur la découverte du framework R Shiny pour le développement d'applications web. 

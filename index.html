@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Mémoire d’une application développée avec Shiny</title>
+  <meta name="description" content="Mémoire d’une application développée avec Shiny" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Mémoire d’une application développée avec Shiny" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Mémoire d’une application développée avec Shiny" />
+  
+  
+  
+
+<meta name="author" content="Axel-Cleris Gailloty" />
+
+
+<meta name="date" content="2020-11-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="choix-de-linux-installation-de-shiny-shiny-server.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#découverte-de-r-et-de-shiny"><i class="fa fa-check"></i><b>1.1</b> Découverte de R et de Shiny</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#motivation"><i class="fa fa-check"></i><b>1.2</b> Motivation</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#références"><i class="fa fa-check"></i><b>1.3</b> Références</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="choix-de-linux-installation-de-shiny-shiny-server.html"><a href="choix-de-linux-installation-de-shiny-shiny-server.html"><i class="fa fa-check"></i><b>2</b> Choix de Linux, installation de shiny, shiny server</a><ul>
+<li class="chapter" data-level="2.1" data-path="choix-de-linux-installation-de-shiny-shiny-server.html"><a href="choix-de-linux-installation-de-shiny-shiny-server.html#installation-de-r-et-de-shiny-server"><i class="fa fa-check"></i><b>2.1</b> Installation de R et de Shiny Server</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="choix-de-linux-installation-de-shiny-shiny-server.html"><a href="choix-de-linux-installation-de-shiny-shiny-server.html#installer-r-sur-ubuntu-14-ou-plus"><i class="fa fa-check"></i><b>2.1.1</b> Installer R sur Ubuntu 14 ou plus</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="choix-de-linux-installation-de-shiny-shiny-server.html"><a href="choix-de-linux-installation-de-shiny-shiny-server.html#références-1"><i class="fa fa-check"></i><b>2.2</b> Références</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Mémoire d’une application développée avec Shiny</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Mémoire d’une application développée avec Shiny</h1>
+<h2 class="subtitle"><em>Un guide de mon expérience de développement d’application avec Shiny</em></h2>
+<p class="author"><em>Axel-Cleris Gailloty</em></p>
+<p class="date"><em>11/04/2020</em></p>
+</div>
+<div id="introduction" class="section level1">
+<h1><span class="header-section-number">1</span> Introduction</h1>
+<div id="découverte-de-r-et-de-shiny" class="section level2">
+<h2><span class="header-section-number">1.1</span> Découverte de R et de Shiny</h2>
+<p>Shiny est un package R, développé par RStudio, qui permet la création de pages web interactives sur lesquelles il est possible de réaliser toutes les analyses / actions disponibles sous R.<br />
+J’ai commencé à apprendre la langage R au début de l’année 2018 dans le cadre du cours “Analyse des données” alors que j’étais en deuxième année de licence Economie et Gestion parcours Economie de l’Université d’Angers.
+On utilisait alors R pour réaliser les analyses factorielles telles que l’Analyse en composantes principales (ACP), l’Analyse des correspondances multiples (ACM), l’Analyse factorielle des correspondance (AFM) avec le package <a href="http://factominer.free.fr/">FactoMiner</a>.</p>
+<p>C’est dans les faits très récemment que j’ai commencé à apprendre Shiny, vers septembre 2019. J’apprenais sur le tas sans réellement avoir un projet spécifique en tête.<br />
+Le premier projet que j’ai réalisé avec Shiny est celui d’un moteur d’extracteur de contenu web (web scraping) du site Indeed. J’avais auparavant construit le webscraper avec Python pour mon utilisation personnelle, extraire les offres d’emplois et les stocker dans un tableau de données Pandas (librairie Python) ensuite les analyse et étudier des tendances.</p>
+<p>J’ai vu l’intérêt de créer une interface utilisateur pour que des personnes puissent utiliser mon programme sans avoir à installer quoi que ce soit. J’ai pensé à utiliser des frameworks Python comme Flask ou Django mais créer une application avec ces frameworks nécessite une connaissance du HTML, du CSS et peut-être du Javascript et surtout il est important d’utiliser un langage de templating comme jinja pour générer dynamiquement les pages. Il était donc tout à fait enviageable de créer l’application avec ces frameworks mais le temps du développement sera grand.</p>
+<p>J’ai donc pensé à Shiny, je pouvais donc capitaliser ma connaissance du langage R pour développer facilement une application sans avoir à me soucier de toutes les spécifications techniques qu’imposaient les frameworks Python.<br />
+J’ai donc décider de créer l’interface pour mon extracteur de contenu avec Shiny et en quelques lignes de code R le résultat est extraordinaire.</p>
+<p>J’ai profité du riche écosystème de packages R pour développer l’application notamment du package <code>reticulate</code> pour faire appeler depuis R les classes et fonctions que j’aie définies en Python. C’est très bluffant !
+J’ai mis sur <a href="http://factominer.free.fr/">GitHub</a></p>
+</div>
+<div id="motivation" class="section level2">
+<h2><span class="header-section-number">1.2</span> Motivation</h2>
+<p>J’ai décidé d’écrire ce mémoire tout d’abord pour servir de référence au futur moi quand je voudrais développer une prochaine application en shiny. Une chose que j’ai apprise avec les langages de programmation et les packages c’est qu’il est impossible de maîtriser toutes les fonctions, tous les paramètres, que prennent les fonctions, tous les détails d’implémentation … par coeur. Bien souvent lorsqu’on écrit du code, on se réfère à la documentation des packages, des fonctions pour réaliser ce qu’on veut faire.</p>
+<p>Le problème est que si on n’utilise pas souvent ce package ou certaines fonctions on risque d’oublier comment on les utilise et on se retrouve à chaque fois à réinventer la roue : se référer à la documentation, chercher sur Google, Stackoveflow …</p>
+<p>Il importe donc de garder des traces des cas d’utilisation qu’on a faites des packages pour vite se référer dans le futur. L’idée est de réduire le stress et de savoir que par le passé on a utilisé ce package et au besoin consulter ce qu’on fait.</p>
+<p>L’autre motivation pour ce travail est permettre aux personnes débutant avec shiny de voir le chemin que j’ai pris pour développer une application.
+Bien que shiny ait une bonne <a href="https://shiny.rstudio.com/reference/shiny/1.3.2/">documentation</a> et une bonne <a href="https://shiny.rstudio.com/reference/shiny/1.3.2/">Galerie d’application</a> avec des demos j’ai trouvé assez difficile de débuter le développement de mon application à savoir par exemple faut-il partir sur un <code>fluidPage</code>, un <code>navbarPage</code> ou encore un <code>basicPage</code>. Bien souvent je me retrouve à adapter du code existant pour arriver à peu près à ce que je veux réaliser sans avoir l’impression que je sais ce que je fais. Ainsi le but de ce mémoire est aussi de dissiper tout doute que le débutant en shiny peut avoir. Le but n’est pas de réécrire la documentation de shiny mais plutôt de partager mon expérience et vous aider le plus possible à développer vos applications.</p>
+<p>Aussi je trouve qu’il y a très peu de documentation en ce qui concerne la personnalisation de l’interface utilisateur. A defaut plusieurs applications shiny que je vois se contentent de l’apparence basique basée sur Bootstrap, j’aimerais donc partager mon expérience dans la personnalisation de l’interface utilisateur : création du page d’accueil en HTML, CSS, personnalisation des boutons, touches …</p>
+<p>Au moment où j’écris cela, je ne suis pas moi-même expert en personnalisation mais ce sont des choses que j’apprendrai.</p>
+</div>
+<div id="références" class="section level2">
+<h2><span class="header-section-number">1.3</span> Références</h2>
+<p>Kevin Ushey, JJ Allaire and Yuan Tang (2020). reticulate: Interface to
+‘Python’. R package version 1.15.
+<a href="https://CRAN.R-project.org/package=reticulate" class="uri">https://CRAN.R-project.org/package=reticulate</a></p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="choix-de-linux-installation-de-shiny-shiny-server.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"search": false
+});
+});
+</script>
+
+</body>
+
+</html>

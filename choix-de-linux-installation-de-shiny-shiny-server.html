@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Choix de Linux, installation de shiny, shiny server | Mémoire d’une application développée avec Shiny</title>
+  <meta name="description" content="2 Choix de Linux, installation de shiny, shiny server | Mémoire d’une application développée avec Shiny" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Choix de Linux, installation de shiny, shiny server | Mémoire d’une application développée avec Shiny" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Choix de Linux, installation de shiny, shiny server | Mémoire d’une application développée avec Shiny" />
+  
+  
+  
+
+<meta name="author" content="Axel-Cleris Gailloty" />
+
+
+<meta name="date" content="2020-11-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introduction.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#découverte-de-r-et-de-shiny"><i class="fa fa-check"></i><b>1.1</b> Découverte de R et de Shiny</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#motivation"><i class="fa fa-check"></i><b>1.2</b> Motivation</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#références"><i class="fa fa-check"></i><b>1.3</b> Références</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="choix-de-linux-installation-de-shiny-shiny-server.html"><a href="choix-de-linux-installation-de-shiny-shiny-server.html"><i class="fa fa-check"></i><b>2</b> Choix de Linux, installation de shiny, shiny server</a><ul>
+<li class="chapter" data-level="2.1" data-path="choix-de-linux-installation-de-shiny-shiny-server.html"><a href="choix-de-linux-installation-de-shiny-shiny-server.html#installation-de-r-et-de-shiny-server"><i class="fa fa-check"></i><b>2.1</b> Installation de R et de Shiny Server</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="choix-de-linux-installation-de-shiny-shiny-server.html"><a href="choix-de-linux-installation-de-shiny-shiny-server.html#installer-r-sur-ubuntu-14-ou-plus"><i class="fa fa-check"></i><b>2.1.1</b> Installer R sur Ubuntu 14 ou plus</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="choix-de-linux-installation-de-shiny-shiny-server.html"><a href="choix-de-linux-installation-de-shiny-shiny-server.html#références-1"><i class="fa fa-check"></i><b>2.2</b> Références</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Mémoire d’une application développée avec Shiny</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="choix-de-linux-installation-de-shiny-shiny-server" class="section level1">
+<h1><span class="header-section-number">2</span> Choix de Linux, installation de shiny, shiny server</h1>
+<p>Un des points importants avec le langage R est qu’il est fonctionne sur tous les systèmes d’exploitations majeurs : Windows, Mac et Linux. Le même code qu’on écrit avec R sur Windows tourne sans problème sur Mac et Linux. <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>J’ai commencé à apprendre shiny sur Windows dans R Studio où j’écris le code et pour visualiser ce que je fais je clique sur le bouton <code>Run App</code> présent dans R Studio.</p>
+<p>Pour ce présent projet j’ai choisi de développer sur Linux avec la distribution Ubuntu. Le code R que j’écris peut tourner sur toutes les plateformes. J’ai choisi Linux pour mettre en avant le programme Shiny Server développé par R Studio et qui ne marche que sur Linux. Shiny Server est un serveur installé sur Linux qui permet de déployer les application shiny sur le web.<br />
+Etant donné que je développe mes applications en local sur mon ordinateur je veux bien les tester sur tous les types de périphériques (smartphone, tablette, PS4 …) avant de les déployer sur Internet. Une fois que ces périphériques sont connectés au réseau local Shiny server peut servir l’application sur une adresse IP.</p>
+<div id="installation-de-r-et-de-shiny-server" class="section level2">
+<h2><span class="header-section-number">2.1</span> Installation de R et de Shiny Server</h2>
+<p>A la fin de ce tutoriel vous pourrez faire tourner un serveur shiny sur votre ordinateur Linux.</p>
+<p>Shiny Server peut être installé sur plusieurs distributions Linux (Debian, CentOS, openSUSE … ). Ici je détaille comment je l’ai installé sur mon PC qui tourne sous un <strong>Ubuntu Desktop 18.04 LTS</strong>. Les étapes sont présentées sur le site de <a href="https://rstudio.com/products/shiny/download-server/ubuntu/">R Studio</a>.</p>
+<div id="installer-r-sur-ubuntu-14-ou-plus" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> Installer R sur Ubuntu 14 ou plus</h3>
+<p>Pour installer la dernière version de R il faut tout d’abord ajouter le répertoire CRAN au système.</p>
+<p>// A COMPLETER</p>
+<p><img src="capture.png" /></p>
+</div>
+</div>
+<div id="références-1" class="section level2">
+<h2><span class="header-section-number">2.2</span> Références</h2>
+<p>Download Shiny Server for Ubuntu 14.04 or later <a href="https://rstudio.com/products/shiny/download-server/ubuntu/" class="uri">https://rstudio.com/products/shiny/download-server/ubuntu/</a></p>
+</div>
+</div>
+
+
+
+
+
+
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Il existe certains packages développés uniquement pour une plateforme en particulier.<a href="choix-de-linux-installation-de-shiny-shiny-server.html#fnref1" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduction.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"search": false
+});
+});
+</script>
+
+</body>
+
+</html>
