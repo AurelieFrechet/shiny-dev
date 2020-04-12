@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="introduction.html"/>
-
+<link rel="next" href="annexes.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -73,9 +73,12 @@
 <li class="chapter" data-level="2" data-path="choix-de-linux-installation-de-shiny-shiny-server.html"><a href="choix-de-linux-installation-de-shiny-shiny-server.html"><i class="fa fa-check"></i><b>2</b> Choix de Linux, installation de shiny, shiny server</a><ul>
 <li class="chapter" data-level="2.1" data-path="choix-de-linux-installation-de-shiny-shiny-server.html"><a href="choix-de-linux-installation-de-shiny-shiny-server.html#installation-de-r-et-de-shiny-server"><i class="fa fa-check"></i><b>2.1</b> Installation de R et de Shiny Server</a><ul>
 <li class="chapter" data-level="2.1.1" data-path="choix-de-linux-installation-de-shiny-shiny-server.html"><a href="choix-de-linux-installation-de-shiny-shiny-server.html#installer-r-sur-ubuntu-14-ou-plus"><i class="fa fa-check"></i><b>2.1.1</b> Installer R sur Ubuntu 14 ou plus</a></li>
+<li class="chapter" data-level="2.1.2" data-path="choix-de-linux-installation-de-shiny-shiny-server.html"><a href="choix-de-linux-installation-de-shiny-shiny-server.html#installation-du-serveur-shiny"><i class="fa fa-check"></i><b>2.1.2</b> Installation du serveur Shiny</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="choix-de-linux-installation-de-shiny-shiny-server.html"><a href="choix-de-linux-installation-de-shiny-shiny-server.html#références-1"><i class="fa fa-check"></i><b>2.2</b> Références</a></li>
 </ul></li>
+<li class="chapter" data-level="3" data-path="annexes.html"><a href="annexes.html"><i class="fa fa-check"></i><b>3</b> Annexes</a></li>
+<li class="chapter" data-level="4" data-path="glossaire.html"><a href="glossaire.html"><i class="fa fa-check"></i><b>4</b> Glossaire</a></li>
 </ul>
 
       </nav>
@@ -105,22 +108,31 @@ Etant donné que je développe mes applications en local sur mon ordinateur je v
 <p>Shiny Server peut être installé sur plusieurs distributions Linux (Debian, CentOS, openSUSE … ). Ici je détaille comment je l’ai installé sur mon PC qui tourne sous un <strong>Ubuntu Desktop 18.04 LTS</strong>. Les étapes sont présentées sur le site de <a href="https://rstudio.com/products/shiny/download-server/ubuntu/">R Studio</a>.</p>
 <div id="installer-r-sur-ubuntu-14-ou-plus" class="section level3">
 <h3><span class="header-section-number">2.1.1</span> Installer R sur Ubuntu 14 ou plus</h3>
-<p>Pour installer la dernière version de R il faut tout d’abord ajouter le répertoire CRAN au système.</p>
-<p>// A COMPLETER</p>
-<p><img src="capture.png" /></p>
+<p>Par défaut lorsqu’on exécute la commande suivante, c’est la version de R correspondant à la version du système d’exploitation Ubuntu qui est installée. Or cette version de R date de deux ans ou plus.</p>
+<pre><code>sudo apt-get install r-base</code></pre>
+<p>Pour installer la dernière version de R il faut tout d’abord ajouter le répertoire CRAN au système d’exploitation Ubuntu. Cela permet d’installer la version la plus récente de R car autrement une version antérieure de R (<code>3.4</code>) va être installée.</p>
+<p>La commande suivante permet d’ajouter le répertoire CRAN à la version de Ubuntu.</p>
+<pre><code>sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9</code></pre>
+<p>Ensuite exécuter les lignes de commandes suivantes :<br />
+Dans un premier temps on met à jour le gestionnaire de package APT puis on installe R.</p>
+<pre><code>sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install r-base-dev</code></pre>
+</div>
+<div id="installation-du-serveur-shiny" class="section level3">
+<h3><span class="header-section-number">2.1.2</span> Installation du serveur Shiny</h3>
+<p>Shiny Server n’est pas un package R mais un programme à part entière qu’il faut installer.</p>
+<p>Pour l’installer il faut d’abord installer Shiny globalement <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> sur le système d’exploitation.</p>
+<pre><code>sudo su - \
+-c &quot;R -e \&quot;install.packages(&#39;shiny&#39;, repos=&#39;https://cran.rstudio.com/&#39;)\&quot;&quot;</code></pre>
 </div>
 </div>
 <div id="références-1" class="section level2">
 <h2><span class="header-section-number">2.2</span> Références</h2>
 <p>Download Shiny Server for Ubuntu 14.04 or later <a href="https://rstudio.com/products/shiny/download-server/ubuntu/" class="uri">https://rstudio.com/products/shiny/download-server/ubuntu/</a></p>
+<p>Ubuntu Packages for R : <a href="https://cran.rstudio.com/bin/linux/ubuntu/README.html" class="uri">https://cran.rstudio.com/bin/linux/ubuntu/README.html</a></p>
 </div>
 </div>
-
-
-
-
-
-
 <div class="footnotes">
 <hr />
 <ol start="1">
@@ -132,8 +144,8 @@ Etant donné que je développe mes applications en local sur mon ordinateur je v
           </div>
         </div>
       </div>
-<a href="introduction.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="annexes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
