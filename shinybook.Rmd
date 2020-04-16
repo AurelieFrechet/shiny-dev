@@ -16,6 +16,7 @@ knitr::opts_chunk$set(comment = NA)
 ## Découverte de R et de Shiny
 
 Shiny est un package R, développé par RStudio, qui permet la création de pages web interactives sur lesquelles il est possible de réaliser toutes les analyses / actions disponibles sous R.  
+
 J'ai commencé à apprendre la langage R  au début de l'année 2018 dans le cadre du cours "Analyse des données" alors que j'étais en deuxième année de licence Economie et Gestion parcours Economie de l'Université d'Angers. 
 On utilisait alors R pour réaliser les analyses factorielles telles que l'Analyse en composantes principales (ACP), l'Analyse des correspondances multiples (ACM), l'Analyse factorielle des correspondance (AFM) avec le package [FactoMiner](http://factominer.free.fr/). 
 
