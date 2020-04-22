@@ -140,14 +140,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2" data-path="choix-de-linux-installation-de-shiny-shiny-server.html"><a href="choix-de-linux-installation-de-shiny-shiny-server.html#administrer-le-serveur-shiny"><i class="fa fa-check"></i><b>2.2</b> Administrer le serveur Shiny</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="servir-vos-applications-shiny.html"><a href="servir-vos-applications-shiny.html"><i class="fa fa-check"></i><b>3</b> Servir vos applications Shiny</a><ul>
-<li class="chapter" data-level="3.1" data-path="servir-vos-applications-shiny.html"><a href="servir-vos-applications-shiny.html#références-1"><i class="fa fa-check"></i><b>3.1</b> Références</a></li>
+<li class="chapter" data-level="3.1" data-path="servir-vos-applications-shiny.html"><a href="servir-vos-applications-shiny.html#servir-lapplication-dans-votre-réseau-local-lan"><i class="fa fa-check"></i><b>3.1</b> Servir l’application dans votre réseau local (LAN)</a></li>
+<li class="chapter" data-level="3.2" data-path="servir-vos-applications-shiny.html"><a href="servir-vos-applications-shiny.html#accéder-à-lapplication-sur-internet"><i class="fa fa-check"></i><b>3.2</b> Accéder à l’application sur Internet</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="servir-vos-applications-shiny.html"><a href="servir-vos-applications-shiny.html#avec-shinyapps.io"><i class="fa fa-check"></i><b>3.2.1</b> Avec <code>shinyapps.io</code></a></li>
+<li class="chapter" data-level="3.2.2" data-path="servir-vos-applications-shiny.html"><a href="servir-vos-applications-shiny.html#sous-un-tunnel-ssh-avec-ngrok"><i class="fa fa-check"></i><b>3.2.2</b> Sous un tunnel SSH avec <code>ngrok</code></a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="structure-dune-application-shiny.html"><a href="structure-dune-application-shiny.html"><i class="fa fa-check"></i><b>4</b> Structure d’une application Shiny</a></li>
-<li class="chapter" data-level="5" data-path="les-interfaces.html"><a href="les-interfaces.html"><i class="fa fa-check"></i><b>5</b> Les Interfaces</a><ul>
-<li class="chapter" data-level="5.1" data-path="les-interfaces.html"><a href="les-interfaces.html#générer-dynamiquement-une-interface-utilisateur"><i class="fa fa-check"></i><b>5.1</b> Générer dynamiquement une interface utilisateur</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="annexes.html"><a href="annexes.html"><i class="fa fa-check"></i><b>6</b> Annexes</a></li>
-<li class="chapter" data-level="7" data-path="glossaire.html"><a href="glossaire.html"><i class="fa fa-check"></i><b>7</b> Glossaire</a></li>
+<li class="chapter" data-level="4" data-path="structure-dune-application-shiny.html"><a href="structure-dune-application-shiny.html"><i class="fa fa-check"></i><b>4</b> Structure d’une application Shiny</a><ul>
+<li class="chapter" data-level="4.1" data-path="structure-dune-application-shiny.html"><a href="structure-dune-application-shiny.html#références-1"><i class="fa fa-check"></i><b>4.1</b> Références</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="structure-dune-application-shiny-1.html"><a href="structure-dune-application-shiny-1.html"><i class="fa fa-check"></i><b>5</b> Structure d’une application Shiny</a></li>
+<li class="chapter" data-level="6" data-path="les-interfaces.html"><a href="les-interfaces.html"><i class="fa fa-check"></i><b>6</b> Les Interfaces</a><ul>
+<li class="chapter" data-level="6.1" data-path="les-interfaces.html"><a href="les-interfaces.html#générer-dynamiquement-une-interface-utilisateur"><i class="fa fa-check"></i><b>6.1</b> Générer dynamiquement une interface utilisateur</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="annexes.html"><a href="annexes.html"><i class="fa fa-check"></i><b>7</b> Annexes</a></li>
+<li class="chapter" data-level="8" data-path="glossaire.html"><a href="glossaire.html"><i class="fa fa-check"></i><b>8</b> Glossaire</a></li>
 </ul>
 
       </nav>
@@ -177,11 +184,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Shiny Server peut être installé sur plusieurs distributions Linux (Debian, CentOS, openSUSE … ). Ici je détaille comment je l’ai installé sur mon PC qui tourne sous un <strong>Ubuntu Desktop 18.04 LTS</strong>. Les étapes sont présentées sur le site de <a href="https://rstudio.com/products/shiny/download-server/ubuntu/">R Studio</a>.</p>
 <div id="installer-r-sur-ubuntu-14-ou-plus" class="section level3">
 <h3><span class="header-section-number">2.1.1</span> Installer R sur Ubuntu 14 ou plus</h3>
-<p>Par défaut lorsqu’on exécute la commande suivante, c’est la version de R correspondant à la version du système d’exploitation Ubuntu qui est installée. Or cette version de R date de deux ans ou plus.</p>
+<p>Par défaut lorsqu’on exécute la commande suivante, c’est la version de R correspondant à la version du système d’exploitation Ubuntu qui est installée. La version Ubuntu 18.04 LTS va installer la dernière version de R disponible au moment de la sortie d’Ubuntu 18.04, ce qui fait qu’il y a un retard de 2 ans. Le serveur shiny marche bien avec les anciennes version de R, mais en deux ans beaucoup d’améliorations ont été apportées au langage, donc pourquoi s’en priver. Il serait bien d’installer la version la plus récente de R.</p>
 <pre><code>sudo apt-get install r-base</code></pre>
-<p>Pour installer la dernière version de R il faut tout d’abord ajouter le répertoire CRAN au système d’exploitation Ubuntu. Cela permet d’installer la version la plus récente de R car autrement une version antérieure de R (<code>3.4</code>) va être installée.</p>
+<p>Pour installer la dernière version de R il faut tout d’abord ajouter le répertoire CRAN le plus récent au système d’exploitation Ubuntu. Cela permet d’installer la version la plus récente de R car autrement c’est la version (<code>3.4</code>) de R qui va être installée.</p>
 <p>La commande suivante permet d’ajouter le répertoire CRAN à la version de Ubuntu.</p>
-<pre><code>sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9</code></pre>
+<pre><code>sudo add-apt-repository &#39;deb https://cloud.r-project.org/bin/linux/ubuntu xenial-cran35/&#39;
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9</code></pre>
 <p>Ensuite exécuter les lignes de commandes suivantes :<br />
 Dans un premier temps on met à jour le gestionnaire de package APT puis on installe R.</p>
 <pre><code>sudo apt-get update
@@ -259,16 +267,17 @@ server {
 <pre><code>run_as axel_cleris;</code></pre>
 <p>Le seul changement que j’ai fait jusque là dans ce fichier est de changer les deux premières lignes pour specifier au serveur de démarrer les applications en tant que <code>axel-cleris</code>. Sans faire de modification le serveur marcherait quand même car lors de l’installation du serveur un compte user shiny a été créé sur l’ordinateur. Nous pouvons voir les 10 derniers utilisateurs crées sur la machine en utilisant la commande suivante.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="fu">cut</span> -d : -f 1 /etc/passwd <span class="kw">|</span> <span class="fu">tail</span> -10</a></code></pre></div>
-<pre><code>avahi
-colord
-hplip
+<pre><code>hplip
 geoclue
 gnome-initial-setup
 gdm
 axel-cleris
 shiny
+rstudio-server
 sshd
-rstudio-server</code></pre>
+ftp
+shellinabox</code></pre>
+<p>Intéressons-nous maintenant au reste de ce fichier de configuration.</p>
 <pre><code>server {
   listen 3838;
 
@@ -278,10 +287,10 @@ rstudio-server</code></pre>
     # Host the directory of Shiny Apps stored in this directory
     site_dir /srv/shiny-server;
     .....</code></pre>
-<p>Le serveur écoute au port 3838. Il est possible de changer ce port.</p>
-<p>Le dossier que le serveur de Shiny sert est situé au <code>/srv/shiny-server</code>.</p>
+<p>Le serveur écoute au port 3838. Vous pouvez changer ce port si vous le souhaitez, dans mon cas je n’ai pas eu besoin de le changer.<br />
+Le fichier de configuration définit une location racine puis crée un dossier qui héberge les applications Shiny, ce dossier est situé au <code>/srv/shiny-server</code>.</p>
 <p>Lorsque vous tapez dans votre navigateur <code>localhost:3838</code> ou <code>127.1.1.0:3838</code> c’est le contenu de ce dossier que le serveur renvoie.</p>
-<p>Regardons ce qu’il y a à l’intérieur.</p>
+<p>Regardons ce qu’il y a à l’intérieur du dossier <code>/srv/shiny-server</code>.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="fu">ls</span> /srv/shiny-server/</a></code></pre></div>
 <pre><code>hello.html
 index.html
@@ -302,10 +311,19 @@ Voici le contenu du fichier HTML</p>
     &lt;/p&gt;
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-<p>Je copie ce fichier vers le dossier qui est servi par le serveur Shiny. Toute opération dans ce dossier requiert des privilèges administrateur.</p>
+<p>Je copie ce fichier vers le dossier <code>/srv/shiny-server</code>. Les opérations de copie ou de modifications dans ce dossier requiert des privilèges administrateur.</p>
 <pre><code>sudo cp Bureau/shiny/learning/hello.html /srv/shiny-server</code></pre>
 <p>Voilà donc le résultat dans mon navigateur à l’adresse <code>127.1.1.0:3838/hello.html</code>.</p>
 <p><img src="img/demo-shiny.png" /></p>
+<p>Lorsqu’on exécute du code R il arrive souvent que le console renvoie des messages d’avertissement ou d’erreur sur le fonctionnement de l’application. Dans le fichier de configuration nous voyons que ces messages sont enregistrés dans le dossier <code>/var/log/shiny-server</code>.</p>
+<pre><code># Log all Shiny output to files in this directory
+    log_dir /var/log/shiny-server;
+
+    # When a user visits the base URL rather than a particular application,
+    # an index of the applications available in this directory will be shown.
+    directory_index on;
+  }
+}</code></pre>
 </div>
 </div>
 <div class="footnotes">

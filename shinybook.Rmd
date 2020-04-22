@@ -73,17 +73,18 @@ Shiny Server peut être installé sur plusieurs distributions Linux (Debian, Cen
 
 ### Installer R sur Ubuntu 14 ou plus  
 
-Par défaut lorsqu'on exécute la commande suivante, c'est la version de R correspondant à la version du système d'exploitation Ubuntu qui est installée. Or cette version de R date de deux ans ou plus. 
+Par défaut lorsqu'on exécute la commande suivante, c'est la version de R correspondant à la version du système d'exploitation Ubuntu qui est installée. La version Ubuntu 18.04 LTS va installer la dernière version de R disponible au moment de la sortie d'Ubuntu 18.04, ce qui fait qu'il y a un retard de 2 ans. Le serveur shiny marche bien avec les anciennes version de R, mais en deux ans beaucoup d'améliorations ont été apportées au langage, donc pourquoi s'en priver. Il serait bien d'installer la version la plus récente de R. 
 
 ```{}
 sudo apt-get install r-base
 ```
 
-Pour installer la dernière version de R il faut tout d'abord ajouter le répertoire CRAN au système d'exploitation Ubuntu. Cela permet d'installer la version la plus récente de R car autrement une version antérieure de R (`3.4`) va être installée.  
+Pour installer la dernière version de R il faut tout d'abord ajouter le répertoire CRAN le plus récent au système d'exploitation Ubuntu. Cela permet d'installer la version la plus récente de R car autrement c'est la version (`3.4`) de R qui va être installée.  
 
 La commande suivante permet d'ajouter le répertoire CRAN à la version de Ubuntu.  
 
 ```{}
+sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu xenial-cran35/'
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
 ```
 
@@ -183,6 +184,7 @@ Le seul changement que j'ai fait jusque là dans ce fichier est de changer les d
 cut -d : -f 1 /etc/passwd | tail -10
 ```
 
+Intéressons-nous maintenant au reste de ce fichier de configuration.
 
 ```{}
 server {
@@ -196,13 +198,12 @@ server {
     .....
 ```
 
-Le serveur écoute au port 3838. Il est possible de changer ce port.  
-
-Le dossier que le serveur de Shiny sert est situé au `/srv/shiny-server`.  
+Le serveur écoute au port 3838. Vous pouvez changer ce port si vous le souhaitez, dans mon cas je n'ai pas eu besoin de le changer.  
+Le fichier de configuration définit une location racine puis crée un dossier qui héberge les applications Shiny, ce dossier est situé au `/srv/shiny-server`.  
 
 Lorsque vous tapez dans votre navigateur `localhost:3838` ou `127.1.1.0:3838` c'est le contenu de ce dossier que le serveur renvoie.  
 
-Regardons ce qu'il y a à l'intérieur.  
+Regardons ce qu'il y a à l'intérieur du dossier `/srv/shiny-server`.  
 
 ```{bash}
 ls /srv/shiny-server/
@@ -230,7 +231,7 @@ Voici le contenu du fichier HTML
 </html>
 ```
 
-Je copie ce fichier vers le dossier qui est servi par le serveur Shiny. Toute opération dans ce dossier requiert des privilèges administrateur.  
+Je copie ce fichier vers le dossier `/srv/shiny-server`. Les opérations de copie ou de modifications dans ce dossier requiert des privilèges administrateur.  
 
 ```{}
 sudo cp Bureau/shiny/learning/hello.html /srv/shiny-server
@@ -240,12 +241,61 @@ Voilà donc le résultat dans mon navigateur à l'adresse `127.1.1.0:3838/hello.
 
 ![](img/demo-shiny.png)
 
+Lorsqu'on exécute du code R il arrive souvent que le console renvoie des messages d'avertissement ou d'erreur sur le fonctionnement de l'application. Dans le fichier de configuration nous voyons que ces messages sont enregistrés dans le dossier `/var/log/shiny-server`.   
+
+```{}
+# Log all Shiny output to files in this directory
+    log_dir /var/log/shiny-server;
+
+    # When a user visits the base URL rather than a particular application,
+    # an index of the applications available in this directory will be shown.
+    directory_index on;
+  }
+}
+```
+
+
 
 # Servir vos applications Shiny
 
+Bien qu'il soit intéressant de servir des pages HTML statiques directement à partir du serveur shiny vous vous doutez bien que ce n'est pas pour cette tâche que nous avons installé Shiny Server.  
 
-Bien qu'il soit intéressant de servir des pages HTML directement à partir du shiny vous vous en doutez que ce n'est pas à cela que Shiny server sert.  
+Le serveur Shiny permet de déployer votre application sur le web permettant ainsi à d'autres personnes de l'utiliser. Dans cette section je vais détailler deux manières de déployer votre application Shiny pour que d'autres personnes l'utilisent. Je parlerai de comment servir votre application sur votre local puis comment permettre que des personnes en dehors de votre local l'utilisent. Pour cette dernière option je ne me restreindrai qu'à présenter les options gratuites.  
 
+
+## Servir l'application dans votre réseau local (LAN)
+
+Une fois que vous avez fini de configurer le serveur shiny sur votre ordinateur tous les appareils connectés au même réseau que votre ordinateur peuvent accéder au serveur par le biais de l'adresse IP de votre ordinateur.  
+Le routeur de votre fournisseur d'accès Internet (FAI) assigne à chaque appareil connecté à votre réseau une adresse IP locale pour identifier vos appareils dans le réseau local. Ce qui nous intéresse ici c'est de trouver l'adresse IP de l'ordinateur sur lequel est installé le serveur Shiny. 
+Avec le terminal nous pouvons utiliser les commandes `ip` ou `ifconfig` pour afficher les informations réseau de l'ordinateur. L'adresse qui nous intéresse commence par `inet` donc nous allons n'afficher que ces informations. L'adresse IP de l'ordinateur visible sur le local est le `192.168.1.30`, donc pour accéder au serveur Shiny à partir d'un autre appareil connecté au réseau est `192.168.1.30:3838`.
+
+```{bash}
+ip a | grep inet
+```
+
+Je vais me connecter au serveur Shiny sur ma tablette. 
+
+![](img/server-ipad.png)
+
+Dès lors vous pouvez utiliser votre application sur tous les appareils connectés à votre réseau local. Cela peut aider à observer le comportement de l'application sur différents types d'écran pour affiner l'interface.  
+
+
+## Accéder à l'application sur Internet
+
+L'application qu'on a déployé sur le serveur Shiny local ne peut être accessible qu'aux appareils connectés au réseau local, une personne en dehors du réseau ne peut y accéder car il n'est pas sur Internet. Je vais dans cette sous-section vous présenter deux solutions pour déployer vos applications de manière à ce que toute personne disposant du lien peut y accéder grâce à Internet. Je présenterai deux solutions : `shinyapps.io` lorsque votre application est prête à l'emploi et que vous voulez le rendre disponible et une solution pour ouvrir votre réseau local à Internet. 
+
+### Avec `shinyapps.io`
+
+// A FAIRE
+
+### Sous un tunnel SSH avec `ngrok`
+
+// A FAIRE
+
+
+# Structure d'une application Shiny
+
+Les applications Shiny permettent d'exécuter du code R dans un environnement web. Les applications Shiny possèdent deux composantes : l'interface utilisateur et les fonctionnalités. 
 
 
 
