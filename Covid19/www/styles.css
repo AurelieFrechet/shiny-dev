@@ -1,8 +1,30 @@
 
-ul navbar-bar {
-  background-color: lightblue;
+.nav-tabs {
+  margin-top:10px;
+    border-bottom: 1px solid #dee2e6;
 }
 
-.navbar-bar a {
-  font-size: 10px;
+ul.nav.nav-tabs{
+  font-size:21px;
+  color:#0F9BF3;
 }
+    
+ul.nav.nav-tabs a {
+  color:#0F9BF3;
+}
+
+.navbar {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: .5rem 1rem
+}
+
+
+a:hover {
+    color: #003adc;
+    text-decoration: underline
+}
+

@@ -29,7 +29,6 @@ displayTreemap <- function(input, output){
   })
 }
 
-
 updateMapRegion <- function(input, output){
   
   subsetRegions <- reactive(input$regionSelected)
