@@ -4,10 +4,6 @@ if (packageVersion("shiny") < 1.5) {
 }
 
 tagList(
-  tags$head(
-    tags$script(async = NA, src = "https://platform.twitter.com/widgets.js"),
-    tags$link(rel = "stylesheets", href = "www/styles.css")
-  ),
   navbarPage("Covid-19",
              theme = "styles.css",
     tabPanel("Today !",

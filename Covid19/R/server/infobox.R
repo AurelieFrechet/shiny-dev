@@ -29,22 +29,3 @@ displayTreemap <- function(input, output){
   })
 }
 
-updateMapRegion <- function(input, output){
-  
-  subsetRegions <- reactive(input$regionSelected)
-  observeEvent(subsetRegions(), {
-    if (length(subsetRegions() >1)) {
-      dataSubsetted <- subset(todayData, Country_Region %in% subsetRegions())
-      output$worldMap <- renderLeaflet({
-        leaflet(data = dataSubsetted) %>%
-          addTiles() %>%
-          addMarkers(lng = ~Long_, lat = ~Lat, 
-                     label = ~paste(Country_Region, Confirmed),
-                     clusterOptions = markerClusterOptions())
-      })
-      
-    } 
-    
-  })
-  
-}

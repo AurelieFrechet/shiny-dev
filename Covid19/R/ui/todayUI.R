@@ -4,13 +4,24 @@ todayUI <- tabsetPanel(
     sidebarLayout(
       sidebarPanel(
         width = 3,
-        uiOutput("selectRegions")
+        selectInput("dataSource", label = "Which Data", 
+                    choices = c("Confirmed", "Deaths", "Recovered"),
+                    selected = "Confirmed"),
+        uiOutput("selectRegions"),
+        actionButton("clearMap", "Clear")
       ),
       mainPanel(
         width = 9,
-        leafletOutput("worldMap")
+        leafletOutput("worldMap", width = 1200, height=800)
       )
     )
+  ),
+  tabPanel("Ex",
+    fluidRow(column(6, 
+                    inputPanel()),
+             column(6,
+                    inputPanel())),
+    fluidRow(column(12))
   ),
   tabPanel(
     "World Statistics",
