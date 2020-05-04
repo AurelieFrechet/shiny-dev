@@ -11,6 +11,7 @@
         addTiles() %>%
         addCircles(lng = ~Long_, lat = ~Lat, weight = 4,
                    radius = ~ selected * 5, popup = ~Combined_Key, 
-                   label = ~paste(Combined_Key, selected))
+                   label = ~paste(Combined_Key, selected),
+                                  layerId = ~Combined_Key)
   }
   

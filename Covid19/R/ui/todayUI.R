@@ -1,21 +1,26 @@
+# Functions to generate/remove UI
+
+
 todayUI <- tabsetPanel(
   tabPanel(
     "Cases world map",
     fluidRow(
-      h3(paste("The latest update of the data is on the", 
-              todayData$Last_Update[1]))
+      htmlOutput("lastUpdate")
+      # h2(paste("The latest update of the data is on the", 
+      #         todayData$Last_Update[1]))
     ),
+      htmlOutput("displayInfo"),
       absolutePanel(
-        bottom = 20, right = 20, width = 300,
+        #bottom = 0, left = 50, top = 200,
         draggable = TRUE,
         selectInput("dataSource", label = "Which Data", 
                     choices = c("Confirmed", "Deaths", "Recovered"),
                     selected = "Confirmed"),
         uiOutput("selectRegions"),
         actionButton("clearMap", "Clear"),
-        style = "opacity: 0.88; z-index:500;"
+        style = "opacity: 0.92; z-index:500;"
       ),
-      leafletOutput("worldMap", width = 1200, height=800)
+      leafletOutput("worldMap", width = 1200, height=600)
     # sidebarLayout(
     #   sidebarPanel(
     #     width = 3,
@@ -30,13 +35,6 @@ todayUI <- tabsetPanel(
     #     leafletOutput("worldMap", width = 1200, height=800)
     #   )
     # )
-  ),
-  tabPanel("Ex",
-    fluidRow(column(6, 
-                    inputPanel()),
-             column(6,
-                    inputPanel())),
-    fluidRow(column(12))
   ),
   tabPanel(
     "World Statistics",

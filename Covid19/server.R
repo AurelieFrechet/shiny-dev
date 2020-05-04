@@ -13,6 +13,12 @@ shinyServer(
       )
     })
     
+    output$lastUpdate <- renderUI({
+      div(class = "alert alert-warning",
+          paste("The last update of the dataset was on ", 
+                todayData$Last_Update[1]))
+    })
+    
     observeEvent(input$dataSource, {
       
       output$worldMap <- renderLeaflet({
@@ -36,6 +42,31 @@ shinyServer(
           }
         })
         
+      })
+      
+      observe({
+        click = input$worldMap_shape_click
+        subData <- subset(todayData, Combined_Key == input$worldMap_shape_click$id)
+        subLon <- subData$Long_
+        subLat <- subData$Lat
+        subCountry <- subData$Country_Region
+        
+        if (is.null(click))
+          return()
+        else {
+          output$displayInfo <- renderUI({
+            div(class = "alert alert-success",
+                h3("Information", class = "alert-heading"),
+                p(paste("Longitude : ", subLon)),
+                p(paste("Latitude : ", subLat)),
+                p(paste("Country : ", subCountry)),
+                p(paste("Province / State : ", subData$Province_State)),
+                p(paste("Number of confirmed cases : ", subData$Confirmed)),
+                p(paste("Number of deaths : ", subData$Deaths)),
+                p(paste("Number of recovery : ", subData$Recovered)),
+                p(paste("% Deaths : ", round(100*subData$Deaths/subData$Confirmed, 2))))
+          })
+        }
       })
       
       observeEvent(input$clearMap, {
